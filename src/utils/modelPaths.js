@@ -1,13 +1,22 @@
 export const MODEL_PATHS = {
-  doctor: 'C:\\Users\\yusuf\\Downloads\\ai medical devops\\medical doctor 3d model.glb',
-  stethoscope: 'C:\\Users\\yusuf\\Downloads\\ai medical devops\\stethoscope 3d model.glb',
-  syringe: 'C:\\Users\\yusuf\\Downloads\\ai medical devops\\cartoon syringe 3d model.glb',
-  pills: 'C:\\Users\\yusuf\\Downloads\\ai medical devops\\pill bottle 3d model.glb',
-  dashboard: 'C:\\Users\\yusuf\\Downloads\\ai medical devops\\dashboard.glb'
+  doctor: '/models/medical-doctor-3d-model.glb',
+  stethoscope: '/models/stethoscope-3d-model.glb',
+  syringe: '/models/cartoon-syringe-3d-model.glb',
+  pills: '/models/pill-bottle-3d-model.glb',
+  dashboard: '/models/dashboard.glb'
+};
+
+export const getModelPath = (modelName) => {
+  const path = MODEL_PATHS[modelName];
+  if (!path) {
+    console.warn(`Model ${modelName} not found`);
+    return null;
+  }
+  return path;
 };
 
 export const AI_CONFIG = {
-  baseURL: import.meta.env.VITE_AI_BASE_URL || 'http://localhost:8000/api/v1',
+  baseURL: import.meta.env.VITE_AI_BASE_URL || '/api/v1',
   apiKey: import.meta.env.VITE_AI_API_KEY,
   endpoints: {
     diagnose: '/diagnose',
